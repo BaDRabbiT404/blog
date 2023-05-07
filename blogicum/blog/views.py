@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+
 from core.query_sets import post_query, category_query
 
 
@@ -12,12 +13,12 @@ def index(request):
 
 def post_detail(request, id):
     """Выводит отдельную страницу поста."""
+    template = "blog/detail.html"
     post = get_object_or_404(
         post_query(),
         pk=id,
     )
     context = {"post": post}
-    template = "blog/detail.html"
     return render(request, template, context)
 
 
